@@ -1,0 +1,144 @@
+{% extends 'base.html.twig' %}
+{% block title %} Zadanie: {{ task.title }} ({{ task.id }}) {% endblock %}
+{% block body %}
+    <h1 class="headline">{{ task.title }}</h1>
+    <div class="float-left w-50">
+        {% if app.user == task.author or is_granted('ROLE_ADMIN') %}
+            <a href="{{ path('app_task_edit', {id: task.id}) }}">Edytuj zadanie</a> <br>
+            <a href="#">Zakończ zadanie</a>
+        {% endif %}
+
+        <p>
+            Priorytet:
+                    {% if task.priority == 'normal' %}
+                        <span><strong>normalny</strong></span>
+                    {% elseif task.priority == 'medium' %}
+                        <span class="def-yellow"><strong>średni</strong></span>
+                    {% else %}
+                        <span class="def-red"><strong>krytyczny</strong></span>
+                    {% endif %}
+                <br>
+            Data dodania: <strong>{{ task.createdAt|date('Y-m-d H:i:s') }}</strong> <br>
+            Termin wykonania:
+            {% if task.deadline %}
+                {% if "now"|date('Y-m-d H:i:s') > task.deadline|date('Y-m-d H:i:s') %}
+                    <span class="def-red"><strong>{{ task.deadline|date('Y-m-d H:i:s') }}</strong></span>
+                {% else %}
+                    <strong>
+                        {{ task.deadline|date('Y-m-d H:i:s') }}
+                    </strong>
+                {% endif %}
+            {% else %}
+                <strong>Brak</strong>
+            {% endif %}
+
+        </p>
+    </div>
+    <div class="float-left w-50">
+        <p><strong>Założyciel zadania:</strong> <a href="#">{{ task.author.login }}</a> <br>
+        <strong>Uczestnicy zadania:</strong>
+            {% set total = 0 %}
+            {% for user in task.users %}
+                {% if task.author != user %}
+                    <a href="#">{{ user.login }}</a>{% if not loop.last %}, {% endif %}
+                {% else %}
+                    {% set total = total + 1 %}
+                {% endif %}
+                {% if total == 1 and loop.length == 1 %}
+                    Brak
+                {% endif %}
+            {% else %}
+                Brak
+            {% endfor %}
+        </p>
+    </div>
+    <div class="clear"></div>
+    <h3 class="headline mt-3">Treść zadania</h3>
+    <div class="task-description">
+        {{ task.content }}
+    </div>
+
+    <h3 class="headline mt-3">Odpowiedzi do zadania</h3>
+    <div class="task-comments">
+        <div class="task-comment">
+            <div class="task-comment-content">
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex align-items-center w-25">
+                        <div class="empty-avatar small-avatar">J</div>
+                        <div class="ml-2">
+                            <a href="#"><strong>jking</strong></a>
+                        </div>
+                    </div>
+                    <span style="opacity: 0.5">
+                        2021-05-02 12:53:14
+                    </span>
+                </div>
+                <div>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Accusamus ad aut beatae dolorum ex labore magni minus nemo nisi odit pariatur perspiciatis placeat quam quo sint sunt ut velit, voluptate.
+                </div>
+            </div>
+            <div class="task-comment-content">
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex align-items-center w-25">
+                        <div class="empty-avatar small-avatar">J</div>
+                        <div class="ml-2">
+                            <a href="#"><strong>jking</strong></a>
+                        </div>
+                    </div>
+                    <div>
+                        2021-05-02 12:53:14
+                    </div>
+                </div>
+                <div>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Accusamus ad aut beatae dolorum ex labore magni minus nemo nisi odit pariatur perspiciatis placeat quam quo sint sunt ut velit, voluptate.
+                </div>
+            </div>
+        </div>
+        <div class="task-comment">
+            <div class="task-comment-content">
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex align-items-center w-25">
+                        <div class="empty-avatar small-avatar">J</div>
+                        <div class="ml-2">
+                            <a href="#"><strong>jking</strong></a>
+                        </div>
+                    </div>
+                    <div>
+                        2021-05-02 12:53:14
+                    </div>
+                </div>
+                <div>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Accusamus ad aut beatae dolorum ex labore magni minus nemo nisi odit pariatur perspiciatis placeat quam quo sint sunt ut velit, voluptate.
+                </div>
+            </div>
+        </div>
+        <div class="task-comment">
+            <div class="task-comment-content">
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex align-items-center w-25">
+                        <div class="empty-avatar small-avatar">J</div>
+                        <div class="ml-2">
+                            <a href="#"><strong>jking</strong></a>
+                        </div>
+                    </div>
+                    <div>
+                        2021-05-02 12:53:14
+                    </div>
+                </div>
+                <div>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Accusamus ad aut beatae dolorum ex labore magni minus nemo nisi odit pariatur perspiciatis placeat quam quo sint sunt ut velit, voluptate.
+                </div>
+            </div>
+        </div>
+    </div>
+    <form action="" class="mt-4">
+        <label for="form-task-comment"><h3 class="headline">Dodaj odpowiedź</h3></label>
+        <textarea name="" id="form-task-comment" cols="30" class="w-100"></textarea>
+        <input type="submit" value="Wyślij" class="ml-0 btn btn-primary">
+    </form>
+
+{% endblock %}

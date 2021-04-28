@@ -1,0 +1,40 @@
+{{ form_start(taskForm) }}
+<div class="d-flex justify-content-between mt-3">
+    <div class="w-50">
+        <div class="form-group">
+            {{ form_label(taskForm.title, 'Nazwa zadania') }}
+            {{ form_widget(taskForm.title, { 'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(taskForm.content, 'Treść zadania') }}
+            {{ form_widget(taskForm.content, { 'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(taskForm.priority, 'Priorytet') }}
+            {{ form_widget(taskForm.priority, { 'attr': {'class': 'form-control w-50'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(taskForm.deadline, 'Termin wykonania') }}
+            {{ form_widget(taskForm.deadline, { 'attr': {'class': 'form-control w-50'}}) }}
+        </div>
+    </div>
+    <div class="w-25">
+        <div class="form-group">
+            <p style="margin-left: -1.25rem">Wykonawcy zadania</p>
+            {% for checkbox in taskForm.users.children %}
+                <div class="styled-input-single d-flex">
+                    {% if app.user.id in checkbox.vars.value|number_format %}
+                        {{ form_widget(checkbox, { 'attr': {'class': 'form-check-input', 'checked': 'checked'}}) }}
+                    {% else %}
+                        {{ form_widget(checkbox, { 'attr': {'class': 'form-check-input'} }) }}
+                    {% endif %}
+                    {{ form_label(checkbox) }}
+                    {{ form_errors(checkbox) }}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<button class="btn btn-primary mt-3">{{ button_text }}</button>
+{{ form_end(taskForm) }}

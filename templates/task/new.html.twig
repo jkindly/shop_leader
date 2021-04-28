@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+{% block title %} Nowe zadanie {% endblock %}
+{% block body %}
+
+    <h1 class="headline">Nowe zadanie</h1>
+
+    {{ include('task/_form.html.twig', { button_text: 'Dodaj zadanie' }) }}
+{% endblock %}

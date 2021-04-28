@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+{% block title %} Zadania {% endblock %}
+{% block body %}
+    <div class="headline d-flex justify-content-between align-items-center">
+        <h1>Twoja lista zadań</h1>
+        <a href="{{ path('app_task_new') }}">Dodaj zadanie</a>
+    </div>
+
+    <table class="table table-hover table-tasks">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nazwa</th>
+            <th scope="col">Zawartość</th>
+            <th scope="col">Termin wykonania</th>
+            <th scope="col">Zlecił</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for task in tasks %}
+            {% if task.priority == 'normal' %}
+                <tr class="table-light"
+            {% elseif task.priority == 'medium' %}
+                <tr class="table-warning"
+            {% else %}
+                <tr class="table-danger"
+            {% endif %}
+            data-href="/task/{{ task.id }}">
+                <td style="width: 5%">{{ task.id }}</td>
+                <td style="width: 20%">{{ task.title }}</td>
+                <td style="width: 45%">{{ task.content|length > 100 ? task.content|slice(0, 100)~'...' : task.content
+                    }}</td>
+                <td style="width: 15%">
+                    {% if task.deadline %}{{ task.deadline|date('Y-m-d H:i:s') }} {% else %}Brak{% endif %}
+                </td>
+                <td style="width: 15%">{{ task.author }}</td>
+            </tr>
+        {% else %}
+            <tr class="table-light">
+                <td class="text-center" colspan="5">Brak zadań</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
