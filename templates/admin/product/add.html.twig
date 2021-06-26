@@ -1,0 +1,49 @@
+{extends file="cms/base_template.tpl"}
+{block "CMSContentContainer"}
+{if isset($message) and !empty($message)}
+<div class="alert alert-dismissible {if ($status)}alert-success{else}alert-danger{/if}">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    {$message}
+</div>
+{/if}
+<a href="admin/product" class="btn btn-primary mb-3"><i class="fas fa-angle-double-left"></i> Powrót</a>
+<h1>Dodawanie nowego produktu</h1>
+
+<div class="row mt-3">
+    <div class="col-6">
+        <form method="post">
+            <div class="form-group">
+                <label for="product-name">Nazwa produktu</label>
+                <input type="text" name="product-name" class="form-control" id="product-name">
+            </div>
+            <div class="form-group">
+                <label for="product-category">Kategoria produktu</label><br/>
+                <select class="custom-select cms-half-input" id="product-category">
+                    <option selected="">Wybierz kategorię produktu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div>
+            <div class="form-group ">
+                <label for="product-price">Cena produktu</label><br/>
+                <input type="text" name="product-price" class="form-control cms-short-input" id="product-price"><span class="cms-product-price-currency">&nbsp;zł</span>
+            </div>
+            <div class="form-group">
+                <label for="product-count-input">Ilość</label><br/>
+                <span class="product-minus-count">-</span>
+                <input type="number" name="product-count" value="1" id="product-count-input">
+                <span class="product-plus-count">+</span>
+            </div>
+            <div class="form-group">
+                <label for="product-images">Zdjęcia produktu</label>
+                <input type="file" name="product-image" class="form-control-file" multiple="multiple" id="product-images">
+                <small id="fileHelp" class="form-text text-muted">Wybierz maksymalnie 6 zdjęć o rozmiarze nie większym niż 4 Mb każdy.</small>
+            </div>
+            <input type="submit" class="btn btn-primary" value="Dodaj">
+        </form>
+    </div>
+</div>
+
+
+{/block}
