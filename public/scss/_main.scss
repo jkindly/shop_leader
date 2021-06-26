@@ -1,11 +1,11 @@
-:root {
-  --def-blue: #4582EC;
-  --light-red: #f94c56;
+@use "abstracts";
+
+html {
+  font-size: 62.5%;
 }
 
 body {
-  background-image: linear-gradient( 109.6deg,  rgba(204,228,247,1) 11.2%, rgba(237,246,250,1) 100.2% );
-  font-size: 62.5%;
+  font-size: 1.6rem !important;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -22,42 +22,99 @@ a, a:hover {
   list-style-type: none;
 }
 
-.flex {
-  display: flex;
-}
-
-.product-plus-count, .product-minus-count {
-  width:30px;
-  height:30px;
-  background:#f2f2f2;
-  border-radius:4px;
-  border:1px solid #ddd;
-  display: inline-block;
-  vertical-align: middle;
-  text-align: center;
-  font-size: 1.5rem;
-  line-height: 28px;
-  cursor: pointer;
-  user-select: none;
-}
-
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-/* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
 }
 
-#product-count-input {
-  height:30px;
-  width: 50px;
-  text-align: center;
-  border:1px solid #ddd;
-  border-radius:4px;
-  display: inline-block;
-  vertical-align: middle;
+p {
+  font-family: 'Roboto', sans-serif !important;
 }
+
+h1 {
+  font-size: 1.7rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1.3rem;
+}
+
+.carousel-item {
+  height: 65vh;
+  min-height: 300px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.underline-title {
+  max-width: 400px;
+  min-height: 35px;
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid black;
+  font-size: 2.2rem;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.left-nav-link {
+  margin-bottom: 5px;
+  font-size: 1.8rem;
+  a {
+    color: rgba(0,0,0,0.5);
+  }
+
+  a:hover {
+    color: #000;
+  }
+}
+
+.max-width-height {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.btn {
+  font-size: 1.6rem;
+}
+
+.form-control {
+  font-size: 1.4rem;
+}
+
+.btn-delete {
+  color: abstracts.$light-red;
+
+  &:hover {
+    color: red;
+  }
+}
+
+.short-input {
+  width: 20%;
+}
+
+.half-input {
+  width: 50%;
+}
+
+select {
+  font-size: 1.6rem !important;
+}
+

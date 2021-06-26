@@ -45,4 +45,4 @@ security:
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/change-password, roles: IS_AUTHENTICATED_FULLY }
-        - { path: ^/, roles: IS_AUTHENTICATED_REMEMBERED }
+        #- { path: ^/, roles: IS_AUTHENTICATED_REMEMBERED }

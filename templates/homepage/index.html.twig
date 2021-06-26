@@ -1,4 +1,44 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-<h1>homepage</h1>
+    <main class="mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-8 m-auto col-s-10 col-md-12">
+                    <h3 class="underline-title">Nowe produkty</h3>
+                </div>
+            </div>
+            <div class="row justify-content-between">
+                {% include 'shop/product/new_products.html.twig' %}
+            </div>
+            <div class="row">
+                <div class="col-8 m-auto col-s-10 col-md-12">
+                    <h3 class="underline-title">Bestsellery</h3>
+                </div>
+            </div>
+            <div class="row justify-content-between">
+                {% include 'shop/product/bestsellers.html.twig' %}
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <h1>Sklep z odzieżą damską i męska online</h1>
+                    <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultrices dignissim orci.
+                        Ut lacinia ex metus, sed cursus magna imperdiet ac. Ut pellentesque quis metus accumsan lobortis.
+                        Integer placerat tellus quis ipsum tristique, nec auctor nisl facilisis. Maecenas mollis hendrerit consequat.
+                        Fusce ut tortor sed magna dapibus consequat. Donec dapibus ante nec magna aliquam luctus.
+                        Maecenas consectetur, sapien eget auctor egestas, tellus velit euismod leo, at vehicula justo lacus vitae ipsum.
+                        Curabitur ultrices dolor non risus aliquam euismod. Aenean id ipsum leo. Maecenas consectetur enim ut nunc molestie, et tincidunt mauris varius.
+                        Nullam sollicitudin dictum risus, ac ornare tellus laoreet tincidunt. Nam auctor diam sit amet lacus varius consectetur.
+                        Quisque in euismod ipsum, nec ornare urna. Proin velit odio, ultricies sit amet dapibus id, interdum a lacus.</p>
+                    <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultrices dignissim orci.
+                        Ut lacinia ex metus, sed cursus magna imperdiet ac. Ut pellentesque quis metus accumsan lobortis.
+                        Integer placerat tellus quis ipsum tristique, nec auctor nisl facilisis. Maecenas mollis hendrerit consequat.
+                        Fusce ut tortor sed magna dapibus consequat. Donec dapibus ante nec magna aliquam luctus.
+                        Maecenas consectetur, sapien eget auctor egestas, tellus velit euismod leo, at vehicula justo lacus vitae ipsum.
+                        Curabitur ultrices dolor non risus aliquam euismod. Aenean id ipsum leo. Maecenas consectetur enim ut nunc molestie, et tincidunt mauris varius.
+                        Nullam sollicitudin dictum risus, ac ornare tellus laoreet tincidunt. Nam auctor diam sit amet lacus varius consectetur.
+                        Quisque in euismod ipsum, nec ornare urna. Proin velit odio, ultricies sit amet dapibus id, interdum a lacus.</p>
+                </div>
+            </div>
+        </div>
+    </main>
 {% endblock %}

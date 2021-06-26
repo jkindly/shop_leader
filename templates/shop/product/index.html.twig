@@ -1,0 +1,110 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    {% include 'parts/side_nav.html.twig' %}
+    <div class="col-12 col-lg-9">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="underline-title">Bluza damska</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <div class="product-image-container border">
+                            <img class="max-width-height" src="http://localhost/smartshop/img/products/1.jpg" alt="">
+                        </div>
+                        <div class="row">
+                            <div class="col-3 mr-0 pr-0">
+                                <div class="product-image-gallery border">
+                                    <img class="max-width-height" src="http://localhost/smartshop/img/products/1.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="col-3 mr-0">
+                                <div class="product-image-gallery border">
+                                    <img class="max-width-height" src="http://localhost/smartshop/img/products/1.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="col-3 mr-0">
+                                <div class="product-image-gallery border">
+                                    <img class="max-width-height" src="http://localhost/smartshop/img/products/1.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="col-3 mr-0">
+                                <div class="product-image-gallery border">
+                                    <img class="max-width-height" src="http://localhost/smartshop/img/products/1.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <table class="product-availability">
+                            <tr>
+                                <td>Dostępność:</td>
+                                <td>w magazynie</td>
+                            </tr>
+                            <tr>
+                                <td>Wysyłka w:</td>
+                                <td>24h</td>
+                            </tr>
+                            <tr>
+                                <td>Dostawa:</td>
+                                <td>od 6,99 zł</td>
+                            </tr>
+                            <tr>
+                                <td>Kod produktu:</td>
+                                <td>PDL-221S</td>
+                            </tr>
+                        </table>
+                        <div class="product-price">129,00 zł</div>
+
+                        <div class="row">
+                            <div class="col-8 mt-3">
+                                <div class="form-group">
+                                    <label for="exampleSelect1">Wybierz rozmiar</label>
+                                    <select class="form-control" id="exampleSelect1">
+                                        <option>XS</option>
+                                        <option>S</option>
+                                        <option>M</option>
+                                        <option>L</option>
+                                        <option>XL</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group product-count">
+                                    <label for="product-count-input">Ilość</label>
+                                    <span class="product-minus-count">-</span>
+                                    <input type="number" value="1" id="product-count-input">
+                                    <span class="product-plus-count">+</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <button type="button" class="btn btn-primary">Do koszyka</button>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 mt-4">
+                        <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ultrices dignissim orci.
+                            Ut lacinia ex metus, sed cursus magna imperdiet ac. Ut pellentesque quis metus accumsan lobortis.
+                            Integer placerat tellus quis ipsum tristique, nec auctor nisl facilisis. Maecenas mollis hendrerit consequat.
+                            Fusce ut tortor sed magna dapibus consequat. Donec dapibus ante nec magna aliquam luctus.
+                            Maecenas consectetur, sapien eget auctor egestas, tellus velit euismod leo, at vehicula justo lacus vitae ipsum.
+                            Curabitur ultrices dolor non risus aliquam euismod. Aenean id ipsum leo. Maecenas consectetur enim ut nunc molestie, et tincidunt mauris varius.
+                            Nullam sollicitudin dictum risus, ac ornare tellus laoreet tincidunt. Nam auctor diam sit amet lacus varius consectetur.
+                            Quisque in euismod ipsum, nec ornare urna. Proin velit odio, ultricies sit amet dapibus id, interdum a lacus.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -41,7 +41,7 @@ class User implements UserInterface
     private $lastName;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
      */
     private $login;
 
@@ -51,20 +51,14 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Task::class, mappedBy="users")
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $tasks;
+    private $descFirst;
 
     /**
-     * @ORM\OneToMany(targetEntity=Task::class, mappedBy="author")
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $task;
-
-    public function __construct()
-    {
-        $this->tasks = new ArrayCollection();
-        $this->task = new ArrayCollection();
-    }
+    private $descSecond;
 
     public function getId(): ?int
     {
@@ -185,43 +179,32 @@ class User implements UserInterface
         return $this;
     }
 
-    /**
-     * @return Collection|Task[]
-     */
-    public function getTasks(): Collection
-    {
-        return $this->tasks;
-    }
-
-    public function addTask(Task $task): self
-    {
-        if (!$this->tasks->contains($task)) {
-            $this->tasks[] = $task;
-            $task->addUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeTask(Task $task): self
-    {
-        if ($this->tasks->removeElement($task)) {
-            $task->removeUser($this);
-        }
-
-        return $this;
-    }
-
     public function __toString()
     {
         return $this->getLogin();
     }
 
-    /**
-     * @return Collection|Task[]
-     */
-    public function getTask(): Collection
+    public function getDescFirst(): ?string
     {
-        return $this->task;
+        return $this->descFirst;
+    }
+
+    public function setDescFirst(?string $descFirst): self
+    {
+        $this->descFirst = $descFirst;
+
+        return $this;
+    }
+
+    public function getDescSecond(): ?string
+    {
+        return $this->descSecond;
+    }
+
+    public function setDescSecond(?string $descSecond): self
+    {
+        $this->descSecond = $descSecond;
+
+        return $this;
     }
 }

@@ -1,0 +1,13 @@
+<head>
+    <meta charset="UTF-8">
+    <title>{% if meta_title is defined %}{{ meta_title }}{% endif %}</title>
+    <meta name="description" content="{% if meta_description is defined %}{{ meta_description }}{% endif %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block stylesheets %}
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('css/bootstrap-litera.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    {% endblock %}
+</head>
