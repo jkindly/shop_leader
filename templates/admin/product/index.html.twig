@@ -18,8 +18,9 @@
         <td>{{ product.id }}</td>
         <td>{{ product.title }}</td>
         <td>{{ product.price }}</td>
-        <td>5</td>
-        <td><a href="admin/product/edit/{$product.id}"><i class="fas fa-edit"></i> Edytuj</a></td>
+        <td>{{ product.count }}</td>
+        <td><a href="{{ path('app_admin_product_edit', {'id': product.id}) }}"><i class="fas fa-edit"></i>
+                Edytuj</a></td>
         <td><a class="btn-delete" href="admin/product/delete/{$product.id}"><i class="fas fa-trash-alt"></i>
                 Usuń</a></td>
     </tr>

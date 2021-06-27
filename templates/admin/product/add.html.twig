@@ -4,39 +4,7 @@
 <h1>Dodawanie nowego produktu</h1>
 <div class="row mt-3">
     <div class="col-6">
-
-        <form action="{{ path('upload_test') }}" method="POST" enctype="multipart/form-data">
-            <input type="file" name="image">
-
-            <button type="submit" class="btn btn-primary">Upload</button>
-        </form>
-
-        <hr>
-
-        {{ form_start(form) }}
-            <div class="form-group">
-                {{ form_label(form.title, 'Nazwa produktu') }}
-                {{ form_widget(form.title) }}
-            </div>
-            <div class="form-group">
-                {{ form_label(form.category, 'Kategoria produktu') }}
-                {{ form_widget(form.category, { 'attr': { 'class': 'custom-select half-input d-block' } }) }}
-            </div>
-            <div class="form-group ">
-                {{ form_label(form.price, 'Cena produktu') }}
-                {{ form_widget(form.price, { 'attr': { 'class': 'short-input' } }) }}
-
-            </div>
-            <div class="form-group">
-                {{ form_label(form.count, 'Ilość') }}
-                <div class="d-block">
-                    <span class="product-minus-count">-</span>
-                    {{ form_widget(form.count, { 'attr': { 'class': 'short-input product-count-input' } }) }}
-                    <span class="product-plus-count">+</span>
-                </div>
-            </div>
-            <input type="submit" class="btn btn-primary" value="Dodaj produkt">
-        {{ form_end(form) }}
+        {{ include('admin/product/_product_form.html.twig', { button_text: 'Dodaj produkt' }) }}
     </div>
 </div>
 {% endblock %}

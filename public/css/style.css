@@ -114,6 +114,10 @@ select {
   font-size: 1.6rem !important;
 }
 
+.alert {
+  font-size: 1.6rem !important;
+}
+
 .logo-basket-bar {
   min-height: 100px;
   justify-content: space-between;

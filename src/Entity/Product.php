@@ -3,6 +3,9 @@
 namespace App\Entity;
 
 use App\Repository\ProductRepository;
+use App\Service\UploaderHelper;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -58,9 +61,19 @@ class Product
     private $count;
 
     /**
-     * @ORM\Column(type="json", nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $images = [];
+    private $imageFilename;
+
+    /**
+     * @ORM\OneToMany(targetEntity=ProductReference::class, mappedBy="product")
+     */
+    private $productReferences;
+
+    public function __construct()
+    {
+        $this->productReferences = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -163,15 +176,28 @@ class Product
         return $this;
     }
 
-    public function getImages(): ?array
+    public function getImageFilename(): ?string
     {
-        return $this->images;
+        return $this->imageFilename;
     }
 
-    public function setImages(?array $images): self
+    public function setImageFilename(?string $imageFilename): self
     {
-        $this->images = $images;
+        $this->imageFilename = $imageFilename;
 
         return $this;
+    }
+
+    public function getImagePath(): ?string
+    {
+        return UploaderHelper::PRODUCT_IMAGE.'/'.$this->getImageFilename();
+    }
+
+    /**
+     * @return Collection|ProductReference[]
+     */
+    public function getProductReferences(): Collection
+    {
+        return $this->productReferences;
     }
 }

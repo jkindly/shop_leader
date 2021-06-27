@@ -1,0 +1,37 @@
+{{ form_start(form) }}
+<div class="form-group">
+    {{ form_label(form.title, 'Nazwa produktu') }}
+    {{ form_widget(form.title) }}
+</div>
+<div class="form-group">
+    {{ form_label(form.category, 'Kategoria produktu') }}
+    {{ form_widget(form.category, { 'attr': { 'class': 'custom-select half-input d-block' } }) }}
+</div>
+<div class="form-group ">
+    {{ form_label(form.price, 'Cena produktu') }}
+    {{ form_widget(form.price, { 'attr': { 'class': 'short-input' } }) }}
+
+</div>
+<div class="form-group">
+    {{ form_label(form.count, 'Ilość') }}
+    <div class="d-block">
+        <span class="product-minus-count">-</span>
+        {{ form_widget(form.count, { 'attr': { 'class': 'short-input product-count-input' } }) }}
+        <span class="product-plus-count">+</span>
+    </div>
+</div>
+<div class="form-group">
+    {{ form_label(form.imageFile, 'Zdjęcie produktu') }}
+    {{ form_widget(form.imageFile, { 'attr': { 'placeholder': 'Wybierz grafikę' } }) }}
+</div>
+<div class="row mb-3">
+    <div class="col-4">
+        {% if form.vars.data.imageFilename|default %}
+            <a href="{{ uploaded_asset(form.vars.data.imagePath) }}" target="_blank">
+                <img class="img-fluid" src="{{ form.vars.data.imagePath|imagine_filter('squared_thumbnail_small') }}">
+            </a>
+        {% endif %}
+    </div>
+</div>
+<button type="submit" class="btn btn-primary">{{ button_text }}</button>
+{{ form_end(form) }}

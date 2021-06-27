@@ -114,6 +114,10 @@ select {
   font-size: 1.6rem !important;
 }
 
+.alert {
+  font-size: 1.6rem !important;
+}
+
 .product {
   margin-bottom: 40px;
   max-width: 300px;

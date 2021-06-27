@@ -1,0 +1,21 @@
+{% extends 'admin/base.html.twig' %}
+{% block body %}
+    <a href="{{ path('app_admin_product') }}" class="btn btn-primary mb-3"><i class="fas fa-angle-double-left"></i> Powrót</a>
+    <h1>Edycja produktu</h1>
+
+    <div class="row mt-3">
+        <div class="col-6">
+            {{ include('admin/product/_product_form.html.twig', { button_text: 'Edytuj produkt' }) }}
+        </div>
+        <div class="col-6">
+            <h2>Referencje</h2>
+
+            <form action="{{ path('app_admin_product_add_reference', {id: product.id}) }}" method="POST"
+                  enctype="multipart/form-data">
+                <input type="file" name="reference">
+                <button type="submit" class="btn btn-primary">Wyślij</button>
+            </form>
+
+        </div>
+    </div>
+{% endblock %}

@@ -62,6 +62,18 @@
     <div class="container">
         <div class="row">
             <div class="col-12 ml-auto mr-auto mt-5">
+                {% for message in app.flashes('success') %}
+                    <div class="alert alert-success">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+
+                {% for message in app.flashes('error') %}
+                    <div class="alert alert-danger">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+
                 {% block body %}{% endblock %}
             </div>
         </div>
@@ -72,7 +84,12 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
             integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
     <script src="{{ asset('js/main.js') }}"></script>
-    <script src="{{ asset('admin/js/image_preview.js') }}"></script>
+    <script>
+        $('.custom-file-input').on('change', function(event) {
+            var inputFile = event.currentTarget;
+            $(inputFile).parent().find('.custom-file-label').html(inputFile.files[0].name);
+        });
+    </script>
 {% endblock %}
 </body>
 </html>
